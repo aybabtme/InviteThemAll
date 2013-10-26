@@ -9,23 +9,24 @@
     <string name="event_name_header">…to attend</string>
     <string name="event_datetime_header">happening on</string>
 
-    <string name="event_name"></string>
-    <string name="invitee_lastname"></string>
-    <string name="invitee_firstname"></string>
-    <string name="inviter_signature"></string>
-    <string name="invitee_email"></string>
-
     <string name="send_invite_button">Send the Invite</string>
 
-    <string name="incomplete_details">Some fields aren\'t set.</string>
+    <string name="nothing_to_send">There is nothing to send.</string>
 
     <!-- JSON request fields-->
     <string name="event_document_type">EventInvitation</string>
     <string name="event_name_field">eventName</string>
     <string name="event_date_field">eventDate</string>
     <string name="event_signature_field">signature</string>
-    <string name="event_firstname_field">inviteeFirstName</string>
-    <string name="event_lastname_field">inviteeLastName</string>
+    <string name="event_displayname_field">inviteeDisplayName</string>
     <string name="event_email_field">inviteeEmail</string>
     <string name="event_optional_message_field">optionalMessage</string>
+    <string name="event_data_incomplete">Some details of your event are missing.</string>
+    <string name="event_import_button">Import from Contacts</string>
+
+    <string name="email_hint">john@doe.com</string>
+    <string name="given_name_hint">John</string>
+    <string name="family_name_hint">Doe</string>
+    <string name="invitee_enter_manually_title">Enter invitee\'s info</string>
+    <string name="invitee_data_incomplete">Some fields are missing.</string>
 </resources>

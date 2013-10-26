@@ -5,8 +5,8 @@ import android.content.Context;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Calendar;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Project: InviteThemAll. Author: antoine. Date: 10/26/2013.
@@ -14,95 +14,53 @@ import java.util.Date;
 public class EventInvitation {
 
   private final String DOCUMENT_TYPE;
-
   private final String EVENT_NAME_FIELD;
   private final String EVENT_DATE_FIELD;
   private final String INVITE_SIGNATURE_FIELD;
-  private final String FIRST_NAME_FIELD;
-  private final String LAST_NAME_FIELD;
+  private final String DISPLAY_NAME_FIELD;
   private final String EMAIL_FIELD;
   private final String OPTIONAL_MESSAGE_FIELD;
+  private Invitee invitee = null;
+  private Event   event   = null;
 
-  private String eventName       = "";
-  private Date   eventDate       = Calendar.getInstance().getTime();
-  private String inviteSignature = "";
-  private String firstName       = "";
-  private String lastName        = "";
-  private String email           = "";
-  private String optionalMessage = "";
-
-  public EventInvitation(Context ctx) {
+  public EventInvitation(Context ctx, Event event, Invitee invitee) {
     DOCUMENT_TYPE = ctx.getString(R.string.event_document_type);
     EVENT_NAME_FIELD = ctx.getString(R.string.event_name_field);
     EVENT_DATE_FIELD = ctx.getString(R.string.event_date_field);
     INVITE_SIGNATURE_FIELD = ctx.getString(R.string.event_signature_field);
-    FIRST_NAME_FIELD = ctx.getString(R.string.event_firstname_field);
-    LAST_NAME_FIELD = ctx.getString(R.string.event_lastname_field);
+    DISPLAY_NAME_FIELD = ctx.getString(R.string.event_displayname_field);
     EMAIL_FIELD = ctx.getString(R.string.event_email_field);
     OPTIONAL_MESSAGE_FIELD = ctx.getString(R.string.event_optional_message_field);
   }
 
-  public void setEventName(String eventName) {
-    this.eventName = eventName;
-  }
+  public static List<EventInvitation> newInstance(Context ctx,
+                                                  Event event,
+                                                  List<Invitee> inviteeList) {
 
-  public void setEventDate(int year, int month, int dayOfMonth) {
-    eventDate.setYear(year);
-    eventDate.setMonth(month);
-    eventDate.setDate(dayOfMonth);
-  }
-
-  public void setEventTime(int hour, int minute) {
-    eventDate.setHours(hour);
-    eventDate.setMinutes(minute);
-  }
-
-  public void setInviteSignature(String inviteSignature) {
-    this.inviteSignature = inviteSignature;
-  }
-
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
-  }
-
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
-  }
-
-  public void setOptionalMessage(String optionalMessage) {
-    this.optionalMessage = optionalMessage;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-  public boolean isComplete() {
-
-    if ("".equals(eventName)) {
-      return false;
+    List<EventInvitation> eventInvitationList = new ArrayList<>(inviteeList.size());
+    for (Invitee i : inviteeList) {
+      eventInvitationList.add(new EventInvitation(ctx, event, i));
     }
-    if ("".equals(inviteSignature)) {
+    return eventInvitationList;
+  }
+
+  public boolean isValid() {
+
+    if (event == null) {
       return false;
     }
 
-    if ("".equals(firstName)) {
-      return false;
-    }
-    if ("".equals(lastName)) {
+    if (!event.isValid()) {
       return false;
     }
 
-    if ("".equals(email)) {
+    if (invitee == null) {
       return false;
     }
 
-    Calendar nextMinute = Calendar.getInstance();
-    nextMinute.add(Calendar.MINUTE, 1);
-    if (eventDate.before(nextMinute.getTime())) {
+    if (!invitee.isValid()) {
       return false;
     }
-
     return true;
   }
 
@@ -111,18 +69,17 @@ public class EventInvitation {
   }
 
   private JSONObject getJSON() throws JSONException {
-    final JSONObject filter= new JSONObject() {{
+    final JSONObject filter = new JSONObject() {{
       accumulate("DocumentType", DOCUMENT_TYPE);
     }};
 
     final JSONObject fields = new JSONObject() {{
-      accumulate(EVENT_NAME_FIELD, eventName);
-      accumulate(EVENT_DATE_FIELD, eventDate);
-      accumulate(INVITE_SIGNATURE_FIELD, inviteSignature);
-      accumulate(FIRST_NAME_FIELD, firstName);
-      accumulate(LAST_NAME_FIELD, lastName);
-      accumulate(EMAIL_FIELD, email);
-      accumulate(OPTIONAL_MESSAGE_FIELD, optionalMessage);
+      accumulate(EVENT_NAME_FIELD, event.getName());
+      accumulate(EVENT_DATE_FIELD, event.getDate());
+      accumulate(INVITE_SIGNATURE_FIELD, event.getInviteSignature());
+      accumulate(DISPLAY_NAME_FIELD, invitee.getDisplayName());
+      accumulate(EMAIL_FIELD, invitee.getEmail());
+      accumulate(OPTIONAL_MESSAGE_FIELD, event.getOptionalMessage());
     }};
 
     final JSONObject request = new JSONObject() {{

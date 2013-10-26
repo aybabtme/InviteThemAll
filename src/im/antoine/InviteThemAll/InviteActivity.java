@@ -1,13 +1,16 @@
 package im.antoine.InviteThemAll;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.DatePickerDialog;
-import android.content.DialogInterface;
+import android.app.DialogFragment;
+import android.content.ContentResolver;
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.provider.ContactsContract;
 import android.util.Log;
+import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -17,22 +20,30 @@ import android.widget.Toast;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Calendar;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class InviteActivity extends Activity {
 
-  private final String TAG = this.getClass().getCanonicalName();
-  private EditText        firstNameEditText;
-  private EditText        lastNameEditText;
-  private EditText        emailEditText;
-  private EditText        eventNameEditText;
-  private EditText        signatureEditText;
-  private DatePicker      eventDatePicker;
-  private TimePicker      eventTimePicker;
-  private Button          sendInviteButton;
+  // Intent codes
+  private static final int    PICK_CONTACT_REQUEST = 1;
+  // Log
+  private final        String TAG                  = this.getClass().getCanonicalName();
+  // Widgets
+  private EditText   eventNameEditText;
+  private EditText   signatureEditText;
+  private DatePicker eventDatePicker;
+  private TimePicker eventTimePicker;
+  // Buttons
+  private Button     importContactButton;
+  private Button     enterManuallyButton;
+  private Button     sendInviteButton;
   // Populated by the views
-  private EventInvitation invitation;
-  private URL             serverUrl;
+  private Event      event;
+  private List<Invitee> inviteeList = new ArrayList<>();
+  // Static stuff
+  private URL serverUrl;
 
   /**
    * Called when the activity is first created.
@@ -43,30 +54,19 @@ public class InviteActivity extends Activity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.main);
 
-    firstNameEditText = (EditText) findViewById(R.id.inviteeFirstnameEditBox);
-    lastNameEditText = (EditText) findViewById(R.id.inviteeLastnameEditText);
-    emailEditText = (EditText) findViewById(R.id.inviteeEmailEditText);
     eventNameEditText = (EditText) findViewById(R.id.eventNameEditText);
     signatureEditText = (EditText) findViewById(R.id.signatureEditText);
     eventDatePicker = (DatePicker) findViewById(R.id.eventDatePicker);
     eventTimePicker = (TimePicker) findViewById(R.id.eventTimePicker);
+
     sendInviteButton = (Button) findViewById(R.id.sendInviteButton);
-
-    firstNameEditText.addTextChangedListener(getFirstNameEditTextListener());
-    lastNameEditText.addTextChangedListener(getLastNameEditTextListener());
-    emailEditText.addTextChangedListener(getEmailEditTextListener());
-    eventNameEditText.addTextChangedListener(getEventNameEditTextListener());
-    signatureEditText.addTextChangedListener(getSignatureEditTextListener());
-
-    Calendar today = Calendar.getInstance();
-    eventDatePicker.init(today.get(Calendar.YEAR),
-                         today.get(Calendar.MONTH),
-                         today.get(Calendar.DAY_OF_MONTH),
-                         getEventDateChangedListener());
-
-    eventTimePicker.setOnTimeChangedListener(getEventTimeChangedListener());
-
     sendInviteButton.setOnClickListener(getSubmitClickListener());
+
+    importContactButton = (Button) findViewById(R.id.importContactButton);
+    importContactButton.setOnClickListener(getImportClickListener());
+
+    enterManuallyButton = (Button) findViewById(R.id.enterManuallyButton);
+    enterManuallyButton.setOnClickListener(getEnterClickListener());
 
     try {
       serverUrl = new URL(getString(R.string.serverUrl));
@@ -74,7 +74,35 @@ public class InviteActivity extends Activity {
       Log.e(TAG, "R.string.serverUrl is messed up", e);
     }
 
-    invitation = new EventInvitation(this);
+  }
+
+  private void enterInviteeDetailsDialog() {
+    DialogFragment newFragment = InviteeFragment.newInstance(inviteeList);
+    newFragment.show(getFragmentManager(), "dialog");
+  }
+
+  private void selectInviteeFromContact() {
+    Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+
+    startActivityForResult(intent, PICK_CONTACT_REQUEST);
+  }
+
+  private View.OnClickListener getEnterClickListener() {
+    return new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        enterInviteeDetailsDialog();
+      }
+    };
+  }
+
+  private View.OnClickListener getImportClickListener() {
+    return new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        selectInviteeFromContact();
+      }
+    };
   }
 
   private View.OnClickListener getSubmitClickListener() {
@@ -82,117 +110,88 @@ public class InviteActivity extends Activity {
     return new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        Log.d(TAG, "Clicked on " + view.getId());
+        Log.d(TAG, "Clicked on " + ((Button) view).getText());
 
+        event = new Event(
+            eventNameEditText.getText().toString(),
+            new Date(
+                eventDatePicker.getYear(),
+                eventDatePicker.getMonth(),
+                eventDatePicker.getDayOfMonth(),
+                eventTimePicker.getCurrentHour(),
+                eventTimePicker.getCurrentMinute()
+            ),
+            signatureEditText.getText().toString()
+        );
 
-        if (!invitation.isComplete()) {
-          Toast.makeText(that, R.string.incomplete_details, Toast.LENGTH_LONG).show();
+        if (inviteeList.isEmpty()) {
+          Toast.makeText(that, R.string.nothing_to_send, Toast.LENGTH_LONG).show();
           return;
         }
 
-        new InvitationSenderTask(serverUrl,
-                                 getApplicationContext())
-            .execute(invitation);
+        if (!event.isValid()) {
+          Toast.makeText(that, R.string.event_data_incomplete, Toast.LENGTH_LONG).show();
+          return;
+        }
+
+        AsyncTask<EventInvitation, Integer, Long> t = new InvitationSenderTask(serverUrl,
+                                                                               getApplicationContext());
+
+        List<EventInvitation> eventInviteList = EventInvitation.newInstance(that,
+                                                                            event,
+                                                                            inviteeList);
+
+        t.execute(eventInviteList.toArray(new EventInvitation[eventInviteList.size()]));
       }
     };
   }
 
-  private TimePicker.OnTimeChangedListener getEventTimeChangedListener() {
-    return new TimePicker.OnTimeChangedListener() {
-      @Override
-      public void onTimeChanged(TimePicker view, int i, int i2) {
-        Log.d(TAG, "Event on " + view.getId());
-        invitation.setEventTime(view.getCurrentHour(),
-                                view.getCurrentMinute());
-      }
-    };
+  @Override
+  public void onActivityResult(int reqCode, int resultCode, Intent data) {
+    super.onActivityResult(reqCode, resultCode, data);
+
+    switch (reqCode) {
+      case (PICK_CONTACT_REQUEST):
+        handleContactIntentResult(resultCode, data);
+        break;
+    }
   }
 
-  private DatePicker.OnDateChangedListener getEventDateChangedListener() {
-    return new DatePicker.OnDateChangedListener() {
-      @Override
-      public void onDateChanged(DatePicker view,
-                                int year,
-                                int monthOfYear,
-                                int dayOfMonth) {
-        Log.d(TAG, "Event on " + view.getId());
-        invitation.setEventDate(year, monthOfYear, dayOfMonth);
-      }
-    };
+  private void handleContactIntentResult(int resultCode, Intent data) {
+    if (resultCode != Activity.RESULT_OK) {
+      return;
+    }
+
+    ContentResolver cr = getContentResolver();
+
+    Uri contactData = data.getData();
+    Cursor c = managedQuery(contactData, null, null, null, null);
+
+    while (c.moveToNext()) {
+
+      String id = c.getString(c.getColumnIndex(ContactsContract.Contacts._ID));
+      String displayName = c.getString(c.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+      String email = getEmailForContactId(id);
+
+      Log.d(TAG, "Adding " + email + " from contacts");
+      inviteeList.add(new Invitee(displayName, email));
+    }
   }
 
-  private TextWatcher getEventNameEditTextListener() {
-    return new TextWatcher() {
-      @Override
-      public void onTextChanged(CharSequence s, int start, int count, int after) {
-        Log.d(TAG, "Set even name");
-        invitation.setEventName(s.toString());
-      }
+  private String getEmailForContactId(String id) {
+    String email = null;
+    ContentResolver cr = getContentResolver();
+    Cursor cur = cr.query(ContactsContract.CommonDataKinds.Email.CONTENT_URI,
+                          null,
+                          ContactsContract.CommonDataKinds.Email.CONTACT_ID + " = ?",
+                          new String[]{id},
+                          null);
 
-      @Override
-      public void afterTextChanged(Editable editable) {}
-      @Override
-      public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-    };
-  }
-
-  private TextWatcher getEmailEditTextListener() {
-    return new TextWatcher() {
-      @Override
-      public void onTextChanged(CharSequence s, int start, int count, int after) {
-        Log.d(TAG, "Set invitee email");
-        invitation.setEmail(s.toString());
-      }
-
-      @Override
-      public void afterTextChanged(Editable editable) {}
-      @Override
-      public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-    };
-  }
-
-  private TextWatcher getSignatureEditTextListener() {
-    return new TextWatcher() {
-      @Override
-      public void onTextChanged(CharSequence s, int start, int count, int after) {
-        Log.d(TAG, "Set invite signature");
-        invitation.setInviteSignature(s.toString());
-      }
-
-      @Override
-      public void afterTextChanged(Editable editable) {}
-      @Override
-      public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-    };
-  }
-
-  private TextWatcher getLastNameEditTextListener() {
-    return new TextWatcher() {
-      @Override
-      public void onTextChanged(CharSequence s, int start, int count, int after) {
-        Log.d(TAG, "Set invitee lastname");
-        invitation.setLastName(s.toString());
-      }
-
-      @Override
-      public void afterTextChanged(Editable editable) {}
-      @Override
-      public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-    };
-  }
-
-  private TextWatcher getFirstNameEditTextListener() {
-    return new TextWatcher() {
-      @Override
-      public void onTextChanged(CharSequence s, int start, int count, int after) {
-        Log.d(TAG, "Set invitee firstname");
-        invitation.setFirstName(s.toString());
-      }
-
-      @Override
-      public void afterTextChanged(Editable editable) {}
-      @Override
-      public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-    };
+    while (cur.moveToNext()) {
+      int idx = cur.getColumnIndex(ContactsContract.CommonDataKinds.Email.DATA);
+      email = cur.getString(idx);
+    }
+    cur.close();
+    return email;
   }
 }

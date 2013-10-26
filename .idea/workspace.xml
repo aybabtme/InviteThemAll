@@ -25,32 +25,40 @@
   </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_CUSTOM_FILTER" value="InviteThemAll" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="DEBUG" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d55b0f67-3234-4395-ae1d-b57a2ed81a88" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/im/antoine/InviteThemAll/Event.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/im/antoine/InviteThemAll/Invitee.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/im/antoine/InviteThemAll/InviteeFragment.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/fragment_event_invitee.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/im/antoine/InviteThemAll/EventInvitation.java" afterPath="$PROJECT_DIR$/src/im/antoine/InviteThemAll/EventInvitation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/im/antoine/InviteThemAll/InvitationSenderTask.java" afterPath="$PROJECT_DIR$/src/im/antoine/InviteThemAll/InvitationSenderTask.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/im/antoine/InviteThemAll/InviteActivity.java" afterPath="$PROJECT_DIR$/src/im/antoine/InviteThemAll/InviteActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/main.xml" afterPath="$PROJECT_DIR$/res/layout/main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="InviteThemAll.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/main.xml" changelist="d55b0f67-3234-4395-ae1d-b57a2ed81a88" time="1382801916371" ignored="false" />
+    <file path="/main.xml" changelist="d55b0f67-3234-4395-ae1d-b57a2ed81a88" time="1382813730830" ignored="false" />
     <file path="/a.xml" changelist="d55b0f67-3234-4395-ae1d-b57a2ed81a88" time="1382796485969" ignored="false" />
-    <file path="/strings.xml" changelist="d55b0f67-3234-4395-ae1d-b57a2ed81a88" time="1382808002947" ignored="false" />
-    <file path="/InviteActivity.java" changelist="d55b0f67-3234-4395-ae1d-b57a2ed81a88" time="1382808553071" ignored="false" />
+    <file path="/strings.xml" changelist="d55b0f67-3234-4395-ae1d-b57a2ed81a88" time="1382818177215" ignored="false" />
+    <file path="/InviteActivity.java" changelist="d55b0f67-3234-4395-ae1d-b57a2ed81a88" time="1382818041511" ignored="false" />
     <file path="/Invitation.java" changelist="d55b0f67-3234-4395-ae1d-b57a2ed81a88" time="1382799302963" ignored="false" />
     <file path="/RequestSender.java" changelist="d55b0f67-3234-4395-ae1d-b57a2ed81a88" time="1382800024916" ignored="false" />
-    <file path="/InvitationSenderTask.java" changelist="d55b0f67-3234-4395-ae1d-b57a2ed81a88" time="1382807090227" ignored="false" />
-    <file path="/EventInvitation.java" changelist="d55b0f67-3234-4395-ae1d-b57a2ed81a88" time="1382807677114" ignored="false" />
-    <file path="/Dummy.txt" changelist="d55b0f67-3234-4395-ae1d-b57a2ed81a88" time="1382804910587" ignored="false" />
+    <file path="/InvitationSenderTask.java" changelist="d55b0f67-3234-4395-ae1d-b57a2ed81a88" time="1382811771179" ignored="false" />
+    <file path="/EventInvitation.java" changelist="d55b0f67-3234-4395-ae1d-b57a2ed81a88" time="1382818156946" ignored="false" />
+    <file path="/Dummy.txt" changelist="d55b0f67-3234-4395-ae1d-b57a2ed81a88" time="1382813177184" ignored="false" />
     <file path="/README.md" changelist="d55b0f67-3234-4395-ae1d-b57a2ed81a88" time="1382801416181" ignored="false" />
     <file path="/AndroidManifest.xml" changelist="d55b0f67-3234-4395-ae1d-b57a2ed81a88" time="1382802108457" ignored="false" />
+    <file path="/InviteeFragment.java" changelist="d55b0f67-3234-4395-ae1d-b57a2ed81a88" time="1382818130378" ignored="false" />
+    <file path="/fragment.java" changelist="d55b0f67-3234-4395-ae1d-b57a2ed81a88" time="1382813326609" ignored="false" />
+    <file path="/Invitee.java" changelist="d55b0f67-3234-4395-ae1d-b57a2ed81a88" time="1382818100978" ignored="false" />
+    <file path="/Event.java" changelist="d55b0f67-3234-4395-ae1d-b57a2ed81a88" time="1382811626274" ignored="false" />
+    <file path="/InviteeArrayAdapter.java" changelist="d55b0f67-3234-4395-ae1d-b57a2ed81a88" time="1382813417853" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,6 +110,38 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <line_breakpoints>
+      <breakpoint url="file://$PROJECT_DIR$/src/im/antoine/InviteThemAll/InviteActivity.java" line="167" class="im.antoine.InviteThemAll.InviteActivity" package="im.antoine.InviteThemAll">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/im/antoine/InviteThemAll/InviteActivity.java" line="114" class="im.antoine.InviteThemAll.InviteActivity$3" package="im.antoine.InviteThemAll">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -111,51 +151,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="EventInvitation.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/im/antoine/InviteThemAll/EventInvitation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="116" column="30" selection-start="3102" selection-end="3102" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="29" selection-start="2970" selection-end="2970" vertical-scroll-proportion="-4.296296">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="31" selection-start="822" selection-end="822" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="InviteActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/im/antoine/InviteThemAll/InviteActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="0" selection-start="3163" selection-end="3163" vertical-scroll-proportion="0.7404844">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InvitationSenderTask.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/im/antoine/InviteThemAll/InvitationSenderTask.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="113" column="24" selection-start="3223" selection-end="3223" vertical-scroll-proportion="0.0">
+            <state line="126" column="12" selection-start="3944" selection-end="3944" vertical-scroll-proportion="0.3323077">
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2917#3051#0" expanded="true" />
+                <element signature="e#3044#3045#0" expanded="true" />
+                <element signature="e#3127#3260#0" expanded="true" />
+                <element signature="e#3253#3254#0" expanded="true" />
+                <element signature="e#3368#4787#0" expanded="true" />
+                <element signature="e#4780#4781#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -183,9 +190,15 @@
         <option value="$PROJECT_DIR$/src/im/antoine/InviteThemAll/InvitationRequest.java" />
         <option value="$PROJECT_DIR$/src/im/antoine/InviteThemAll/RequestSender.java" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/res/layout/main.xml" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/im/antoine/InviteThemAll/Event.java" />
         <option value="$PROJECT_DIR$/src/im/antoine/InviteThemAll/InvitationSenderTask.java" />
+        <option value="$PROJECT_DIR$/res/layout/invitee_list_item.xml" />
+        <option value="$PROJECT_DIR$/src/im/antoine/InviteThemAll/InviteeArrayAdapter.java" />
+        <option value="$PROJECT_DIR$/res/layout/main.xml" />
+        <option value="$PROJECT_DIR$/res/layout/fragment_event_invitee.xml" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/im/antoine/InviteThemAll/Invitee.java" />
+        <option value="$PROJECT_DIR$/src/im/antoine/InviteThemAll/InviteeFragment.java" />
         <option value="$PROJECT_DIR$/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/src/im/antoine/InviteThemAll/EventInvitation.java" />
         <option value="$PROJECT_DIR$/src/im/antoine/InviteThemAll/InviteActivity.java" />
@@ -325,7 +338,7 @@
     <property name="options.lastSelected" value="preferences.sourceCode.XML" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/workspace/marioai" />
-    <property name="AndroidLayoutSelectedEditor" value="text-editor" />
+    <property name="AndroidLayoutSelectedEditor" value="android-designer" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -333,6 +346,11 @@
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="im.antoine.InviteThemAll" />
+    </key>
   </component>
   <component name="RunManager" selected="Android Application.InviteThemAll">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -518,33 +536,53 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1680" height="1024" extended-state="0" />
     <editor active="true" />
     <layout>
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3255814" sideWeight="0.670354" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22827417" sideWeight="0.670354" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961586" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.6095133" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32964602" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22888617" sideWeight="0.670354" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22888617" sideWeight="0.39048672" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32411504" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3255814" sideWeight="0.67588496" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22827417" sideWeight="0.67588496" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -615,34 +653,18 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="29" selection-start="2970" selection-end="2970" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="62" selection-start="330" selection-end="330" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="40" selection-start="647" selection-end="647" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/im/antoine/InviteThemAll/InviteActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="90" column="39" selection-start="3319" selection-end="3319" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2917#3051#0" expanded="true" />
+            <element signature="e#3044#3045#0" expanded="true" />
+            <element signature="e#3127#3260#0" expanded="true" />
+            <element signature="e#3253#3254#0" expanded="true" />
+            <element signature="e#3368#4787#0" expanded="true" />
+            <element signature="e#4780#4781#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -658,7 +680,9 @@
     <entry file="file://$PROJECT_DIR$/src/im/antoine/InviteThemAll/EventInvitation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -667,50 +691,98 @@
         <state line="5" column="32" selection-start="145" selection-end="145" vertical-scroll-proportion="0.13711151" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+    <entry file="file://$PROJECT_DIR$/src/im/antoine/InviteThemAll/Event.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="62" selection-start="330" selection-end="330" vertical-scroll-proportion="0.1816609">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="29" selection-start="2970" selection-end="2970" vertical-scroll-proportion="-4.296296">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/im/antoine/InviteThemAll/InvitationSenderTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="24" selection-start="3223" selection-end="3223" vertical-scroll-proportion="0.0">
+        <state line="11" column="17" selection-start="234" selection-end="234" vertical-scroll-proportion="-0.45328718">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/fragment_event_invitee.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="52" selection-start="841" selection-end="841" vertical-scroll-proportion="0.40467626">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state line="29" column="12" selection-start="1109" selection-end="1109" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="37" selection-start="900" selection-end="900" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/im/antoine/InviteThemAll/InviteeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="62" selection-start="2463" selection-end="2463" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#2072#2792#0" expanded="true" />
+            <element signature="e#2785#2786#0" expanded="true" />
+            <element signature="e#2874#3041#0" expanded="true" />
+            <element signature="e#3034#3035#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/im/antoine/InviteThemAll/Invitee.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="30" selection-start="298" selection-end="312" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="31" selection-start="822" selection-end="822" vertical-scroll-proportion="0.0">
+        <state line="28" column="51" selection-start="1343" selection-end="1343" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/im/antoine/InviteThemAll/InvitationSenderTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="5" selection-start="1575" selection-end="1575" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/im/antoine/InviteThemAll/EventInvitation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="30" selection-start="3102" selection-end="3102" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="19" column="42" selection-start="491" selection-end="491" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/im/antoine/InviteThemAll/InviteActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="0" selection-start="3163" selection-end="3163" vertical-scroll-proportion="0.7404844">
-          <folding />
+        <state line="126" column="12" selection-start="3944" selection-end="3944" vertical-scroll-proportion="0.3323077">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2917#3051#0" expanded="true" />
+            <element signature="e#3044#3045#0" expanded="true" />
+            <element signature="e#3127#3260#0" expanded="true" />
+            <element signature="e#3253#3254#0" expanded="true" />
+            <element signature="e#3368#4787#0" expanded="true" />
+            <element signature="e#4780#4781#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

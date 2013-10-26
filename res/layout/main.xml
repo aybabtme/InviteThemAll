@@ -1,92 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
         >
+
     <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/inviter_signature"
             android:id="@+id/signatureEditText"
-            android:inputType="textCapWords"/>
-    <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/invitee_header"
-            android:id="@+id/textView1"/>
+            android:inputType="textCapWords"
+            android:layout_alignLeft="@+id/textView1"
+            android:layout_above="@+id/importContactButton"/>
 
-    <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-        <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/invitee_firstname"
-                android:id="@+id/inviteeFirstnameEditBox"
-                android:layout_gravity="left"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:inputType="textPersonName"/>
-
-        <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/invitee_lastname"
-                android:id="@+id/inviteeLastnameEditText"
-                android:layout_toRightOf="@+id/inviteeFirstnameEditBox"
-                android:layout_alignTop="@+id/inviteeFirstnameEditBox"
-                android:inputType="textPersonName"/>
-
-        <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/invitee_email"
-                android:id="@+id/inviteeEmailEditText"
-                android:layout_alignLeft="@+id/inviteeFirstnameEditBox"
-                android:layout_below="@+id/inviteeFirstnameEditBox"
-                android:layout_alignParentRight="true"
-                android:inputType="textEmailAddress"/>
-    </RelativeLayout>
 
     <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/event_name_header"
-            android:id="@+id/textView"/>
+            android:id="@+id/textView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"/>
+
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/event_name"
             android:id="@+id/eventNameEditText"
             android:layout_gravity="center"
-            android:inputType="textCapWords"/>
+            android:inputType="textCapWords"
+            android:layout_alignLeft="@+id/signatureEditText"
+            android:layout_below="@+id/textView"
+            android:layout_alignRight="@+id/signatureEditText"/>
 
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/event_datetime_header"
             android:id="@+id/eventDateTimeHeaderText"
-            android:layout_gravity="left|center_vertical"/>
+            android:layout_gravity="left|center_vertical"
+            android:layout_alignLeft="@+id/signatureEditText"
+            android:layout_below="@+id/importContactButton"/>
 
     <DatePicker
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:id="@+id/eventDatePicker"/>
+            android:id="@+id/eventDatePicker"
+            android:layout_toRightOf="@+id/eventDateTimeHeaderText"
+            android:layout_above="@+id/eventTimePicker"/>
 
     <TimePicker
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/eventTimePicker"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:layout_alignRight="@+id/signatureEditText"
+            android:layout_above="@+id/sendInviteButton"/>
 
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/send_invite_button"
             android:id="@+id/sendInviteButton"
-            android:layout_gravity="right|center_vertical"/>
-</LinearLayout>
+            android:layout_gravity="right|center_vertical"
+            android:layout_alignRight="@+id/signatureEditText"
+            android:layout_alignParentBottom="true"/>
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/event_import_button"
+            android:id="@+id/importContactButton"
+            android:layout_gravity="center"
+            android:layout_toLeftOf="@+id/sendInviteButton"
+            android:layout_above="@+id/eventDatePicker"/>
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter manually"
+            android:id="@+id/enterManuallyButton"
+            android:layout_alignRight="@+id/signatureEditText"
+            android:layout_above="@+id/eventDatePicker"/>
+
+</RelativeLayout>
 

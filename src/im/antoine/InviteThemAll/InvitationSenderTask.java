@@ -51,7 +51,6 @@ public class InvitationSenderTask extends AsyncTask<EventInvitation, Integer, Lo
 
     List<EventInvitation> failedInvites = new ArrayList<>();
 
-
     for (EventInvitation invitation : eventInvitations) {
       postInvitation(client, failedInvites, invitation);
     }
@@ -96,9 +95,7 @@ public class InvitationSenderTask extends AsyncTask<EventInvitation, Integer, Lo
       Log.e(TAG, String.format("Request failed, code=%d, reason=%s",
                                status,
                                resp.getStatusLine().getReasonPhrase()));
-      if (Math.round(status/100) == 4) {
-        // The problem is with our request, don't retry
-      } else {
+      if (status >= 400 && status < 500) {
         failures.add(invitation);
       }
     }

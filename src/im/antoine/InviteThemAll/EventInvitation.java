@@ -31,6 +31,9 @@ public class EventInvitation {
     DISPLAY_NAME_FIELD = ctx.getString(R.string.event_displayname_field);
     EMAIL_FIELD = ctx.getString(R.string.event_email_field);
     OPTIONAL_MESSAGE_FIELD = ctx.getString(R.string.event_optional_message_field);
+
+    this.event = event;
+    this.invitee = invitee;
   }
 
   public static List<EventInvitation> newInstance(Context ctx,
@@ -78,13 +81,18 @@ public class EventInvitation {
       accumulate(EVENT_DATE_FIELD, event.getDate());
       accumulate(INVITE_SIGNATURE_FIELD, event.getInviteSignature());
       accumulate(DISPLAY_NAME_FIELD, invitee.getDisplayName());
-      accumulate(EMAIL_FIELD, invitee.getEmail());
       accumulate(OPTIONAL_MESSAGE_FIELD, event.getOptionalMessage());
+    }};
+
+    final JSONObject actions = new JSONObject() {{
+      accumulate("Type", "Email");
+      accumulate("To", invitee.getEmail());
     }};
 
     final JSONObject request = new JSONObject() {{
       accumulate("filters", filter);
       accumulate("fields", fields);
+      accumulate("actions", actions);
     }};
 
     return request;

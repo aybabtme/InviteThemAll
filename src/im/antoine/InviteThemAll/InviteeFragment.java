@@ -39,6 +39,8 @@ public class InviteeFragment extends DialogFragment {
                            ViewGroup container,
                            Bundle savedInstanceState) {
 
+    super.onCreateView(inflater, container, savedInstanceState);
+
     Log.d(TAG, "Inflating");
     View v = inflater.inflate(R.layout.fragment_event_invitee, container, false);
 
@@ -46,21 +48,25 @@ public class InviteeFragment extends DialogFragment {
     lastNameEditText = (EditText) v.findViewById(R.id.inviteeLastnameEditText);
     emailEditText = (EditText) v.findViewById(R.id.inviteeEmailEditText);
 
+
     return v;
   }
 
   @Override
   public Dialog onCreateDialog(Bundle savedInstanceState) {
+    super.onCreateDialog(savedInstanceState);
+
     Log.d(TAG, "Creating dialog");
-    return new AlertDialog.Builder(getActivity())
-        .setTitle(getString(R.string.invitee_enter_manually_title))
-        .setPositiveButton(android.R.string.ok,
-                           getOkListener()
-        )
-        .setNegativeButton(android.R.string.cancel,
-                           getCancelListener()
-        )
-        .create();
+
+    AlertDialog.Builder d = new AlertDialog.Builder(getActivity());
+
+    d.setTitle(getString(R.string.invitee_enter_manually_title));
+    d.setPositiveButton(android.R.string.ok, getOkListener());
+    d.setNegativeButton(android.R.string.cancel, getCancelListener());
+
+    Dialog alDi = d.create();
+
+    return alDi;
   }
 
   private DialogInterface.OnClickListener getOkListener() {
@@ -80,7 +86,7 @@ public class InviteeFragment extends DialogFragment {
           return;
         }
 
-        Log.d(TAG, "Add "+email+" to list");
+        Log.d(TAG, "Add " + email + " to list");
 
         inviteeList.add(inv);
         dismiss();

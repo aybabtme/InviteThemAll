@@ -173,8 +173,15 @@ public class InviteActivity extends Activity {
       String displayName = c.getString(c.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
       String email = getEmailForContactId(id);
 
+      Invitee inv = new Invitee(displayName, email);
+
+      if (!inv.isValid()) {
+        Log.e(TAG, "Invitee invalid, name:" + inv.getDisplayName() + " email:" + inv.getEmail());
+        break;
+      }
+
       Log.d(TAG, "Adding " + email + " from contacts");
-      inviteeList.add(new Invitee(displayName, email));
+      inviteeList.add(inv);
     }
   }
 

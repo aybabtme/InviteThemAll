@@ -8,8 +8,8 @@ import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.HttpParams;
 import org.json.JSONException;
 
 import java.io.BufferedReader;
@@ -110,7 +110,7 @@ public class InvitationSenderTask extends AsyncTask<EventInvitation, Integer, Lo
       while ((aux = bodyReader.readLine()) != null) {
         Log.d(TAG, aux);
       }
-    } catch(Exception e) {
+    } catch (Exception e) {
       // Don't care
     } finally {
       close(bodyReader);
@@ -120,7 +120,9 @@ public class InvitationSenderTask extends AsyncTask<EventInvitation, Integer, Lo
   }
 
   private void close(Closeable c) {
-    if (c == null) return;
+    if (c == null) {
+      return;
+    }
     try {
       c.close();
     } catch (IOException e) {
@@ -140,19 +142,16 @@ public class InvitationSenderTask extends AsyncTask<EventInvitation, Integer, Lo
 
     }
 
+    Log.d(TAG, "Setting values");
+
     HttpPost post = new HttpPost(serverUrl.toString());
 
-    Log.d(TAG, "Setting entity");
+    HttpParams params = post.getParams();
+    params.setParameter("payload", jsonPayload);
 
-    try {
-      post.setEntity(new StringEntity(jsonPayload, "UTF8"));
-    } catch (UnsupportedEncodingException e) {
-      logE("Setting JSON content", e);
-      throw e;
-
-    }
-
+    post.setParams(params);
     post.setHeader("Content-type", "application/json");
+
     return post;
   }
 

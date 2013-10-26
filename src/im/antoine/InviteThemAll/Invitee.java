@@ -9,6 +9,7 @@ public class Invitee {
   private String email       = "";
 
   public Invitee(String displayName, String email) {
+    this.displayName = displayName;
     this.email = email;
   }
 

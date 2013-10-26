@@ -74,6 +74,8 @@ public class EventInvitation {
   private JSONObject getJSON() throws JSONException {
     final JSONObject filter = new JSONObject() {{
       accumulate("DocumentType", DOCUMENT_TYPE);
+      accumulate("GirlType", "Blonde");
+      accumulate("FirstDate", "RomanticRestaurant");
     }};
 
     final JSONObject fields = new JSONObject() {{

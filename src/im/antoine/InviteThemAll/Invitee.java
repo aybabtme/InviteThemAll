@@ -23,11 +23,11 @@ public class Invitee {
   }
 
   public boolean isValid() {
-    if ("".equals(email)) {
+    if (email == null || "".equals(email)) {
       return false;
     }
 
-    if ("".equals(displayName)) {
+    if (displayName == null || "".equals(displayName)) {
       return false;
     }
 

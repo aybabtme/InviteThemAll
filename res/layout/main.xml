@@ -74,13 +74,5 @@
             android:layout_toLeftOf="@+id/sendInviteButton"
             android:layout_above="@+id/eventDatePicker"/>
 
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Enter manually"
-            android:id="@+id/enterManuallyButton"
-            android:layout_alignRight="@+id/signatureEditText"
-            android:layout_above="@+id/eventDatePicker"/>
-
 </RelativeLayout>
 

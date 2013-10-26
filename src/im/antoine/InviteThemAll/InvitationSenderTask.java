@@ -6,9 +6,13 @@ import android.util.Log;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpParams;
 import org.json.JSONException;
 
@@ -18,7 +22,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.net.URL;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,9 +33,9 @@ public class InvitationSenderTask extends AsyncTask<EventInvitation, Integer, Lo
 
   private final String TAG = this.getClass().getCanonicalName();
   private Context context;
-  private URL     serverUrl;
+  private String     serverUrl;
 
-  public InvitationSenderTask(URL serverUrl, Context context) {
+  public InvitationSenderTask(String serverUrl, Context context) {
     super();
     this.serverUrl = serverUrl;
     this.context = context;
@@ -106,10 +110,14 @@ public class InvitationSenderTask extends AsyncTask<EventInvitation, Integer, Lo
       body = resp.getEntity().getContent();
 
       bodyReader = new BufferedReader(new InputStreamReader(body));
-      String aux = "";
+
+      StringBuffer bf = new StringBuffer();
+      String aux;
       while ((aux = bodyReader.readLine()) != null) {
-        Log.d(TAG, aux);
+        bf.append(aux + "\n");
       }
+
+      Log.d(TAG, bf.toString());
     } catch (Exception e) {
       // Don't care
     } finally {
@@ -117,17 +125,6 @@ public class InvitationSenderTask extends AsyncTask<EventInvitation, Integer, Lo
       close(body);
     }
 
-  }
-
-  private void close(Closeable c) {
-    if (c == null) {
-      return;
-    }
-    try {
-      c.close();
-    } catch (IOException e) {
-      // Don't care
-    }
   }
 
   private HttpPost prepareHttpPost(EventInvitation invitation)
@@ -146,13 +143,25 @@ public class InvitationSenderTask extends AsyncTask<EventInvitation, Integer, Lo
 
     HttpPost post = new HttpPost(serverUrl.toString());
 
-    HttpParams params = post.getParams();
-    params.setParameter("payload", jsonPayload);
 
-    post.setParams(params);
-    post.setHeader("Content-type", "application/json");
+    List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+    nameValuePairs.add(new BasicNameValuePair("payload", jsonPayload));
+    post.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+//    post.setHeader("Content-type", "application/json");
 
     return post;
+  }
+
+  private void close(Closeable c) {
+    if (c == null) {
+      return;
+    }
+    try {
+      c.close();
+    } catch (IOException e) {
+      // Don't care
+    }
   }
 
   private void logE(String context, Throwable t) {

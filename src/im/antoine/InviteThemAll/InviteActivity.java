@@ -37,13 +37,12 @@ public class InviteActivity extends Activity {
   private TimePicker eventTimePicker;
   // Buttons
   private Button     importContactButton;
-  private Button     enterManuallyButton;
   private Button     sendInviteButton;
   // Populated by the views
   private Event      event;
   private List<Invitee> inviteeList = new ArrayList<>();
   // Static stuff
-  private URL serverUrl;
+  private String serverUrl;
 
   /**
    * Called when the activity is first created.
@@ -65,35 +64,15 @@ public class InviteActivity extends Activity {
     importContactButton = (Button) findViewById(R.id.importContactButton);
     importContactButton.setOnClickListener(getImportClickListener());
 
-    enterManuallyButton = (Button) findViewById(R.id.enterManuallyButton);
-    enterManuallyButton.setOnClickListener(getEnterClickListener());
+    serverUrl = getString(R.string.serverUrl);
 
-    try {
-      serverUrl = new URL(getString(R.string.serverUrl));
-    } catch (MalformedURLException e) {
-      Log.e(TAG, "R.string.serverUrl is messed up", e);
-    }
 
-  }
-
-  private void enterInviteeDetailsDialog() {
-    DialogFragment newFragment = InviteeFragment.newInstance(inviteeList);
-    newFragment.show(getFragmentManager(), "dialog");
   }
 
   private void selectInviteeFromContact() {
     Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
 
     startActivityForResult(intent, PICK_CONTACT_REQUEST);
-  }
-
-  private View.OnClickListener getEnterClickListener() {
-    return new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        enterInviteeDetailsDialog();
-      }
-    };
   }
 
   private View.OnClickListener getImportClickListener() {
@@ -170,13 +149,16 @@ public class InviteActivity extends Activity {
     while (c.moveToNext()) {
 
       String id = c.getString(c.getColumnIndex(ContactsContract.Contacts._ID));
-      String displayName = c.getString(c.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+      String
+          displayName =
+          c.getString(c.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
       String email = getEmailForContactId(id);
 
       Invitee inv = new Invitee(displayName, email);
 
       if (!inv.isValid()) {
-        Log.e(TAG, "Invitee invalid, name:" + inv.getDisplayName() + " email:" + inv.getEmail());
+        Log.e(TAG, "Invitee invalid, name:" + inv.getDisplayName() + " email:" + inv
+            .getEmail());
         break;
       }
 

@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="serverUrl">http://dating.smartproposition.com/api/GenerateDocument</string>
+
     <string name="app_name">InviteThemAll</string>
-    <string name="event_name">Antoine and Minh\'s Wedding</string>
-    <string name="invitee_lastname">Doe</string>
-    <string name="invitee_firstname">John</string>
-    <string name="inviter_signature">Antoine and Minh</string>
-    <string name="signature_by">By</string>
-    <string name="invitee_header">Are inviting</string>
-    <string name="event_name_header">To attend</string>
-    <string name="invitee_email">john@doe.com</string>
-    <string name="send_invite_button">Send the Invite</string>
+
+    <string name="signature_header">Organized by</string>
+    <string name="invitee_header">…invite :</string>
+    <string name="event_name_header">…to attend</string>
     <string name="event_datetime_header">happening on</string>
-    <string name="serverUrl">http://nothin.lol.com</string>
+
+    <string name="event_name"></string>
+    <string name="invitee_lastname"></string>
+    <string name="invitee_firstname"></string>
+    <string name="inviter_signature"></string>
+    <string name="invitee_email"></string>
+
+    <string name="send_invite_button">Send the Invite</string>
+
+    <string name="incomplete_details">Some fields aren\'t set.</string>
+
+    <!-- JSON request fields-->
+    <string name="event_document_type">EventInvitation</string>
+    <string name="event_name_field">eventName</string>
+    <string name="event_date_field">eventDate</string>
+    <string name="event_signature_field">signature</string>
+    <string name="event_firstname_field">inviteeFirstName</string>
+    <string name="event_lastname_field">inviteeLastName</string>
+    <string name="event_email_field">inviteeEmail</string>
+    <string name="event_optional_message_field">optionalMessage</string>
 </resources>

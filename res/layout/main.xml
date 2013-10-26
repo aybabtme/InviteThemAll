@@ -67,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/event_datetime_header"
-            android:id="eventDateTimeHeaderText"
+            android:id="@+id/eventDateTimeHeaderText"
             android:layout_gravity="left|center_vertical"/>
 
     <DatePicker

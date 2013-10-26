@@ -1,7 +1,11 @@
 package im.antoine.InviteThemAll;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +13,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -17,7 +22,6 @@ import java.util.Calendar;
 public class InviteActivity extends Activity {
 
   private final String TAG = this.getClass().getCanonicalName();
-
   private EditText        firstNameEditText;
   private EditText        lastNameEditText;
   private EditText        emailEditText;
@@ -26,10 +30,9 @@ public class InviteActivity extends Activity {
   private DatePicker      eventDatePicker;
   private TimePicker      eventTimePicker;
   private Button          sendInviteButton;
-
   // Populated by the views
   private EventInvitation invitation;
-  private URL serverUrl;
+  private URL             serverUrl;
 
   /**
    * Called when the activity is first created.
@@ -71,14 +74,22 @@ public class InviteActivity extends Activity {
       Log.e(TAG, "R.string.serverUrl is messed up", e);
     }
 
-    invitation = new EventInvitation();
+    invitation = new EventInvitation(this);
   }
 
   private View.OnClickListener getSubmitClickListener() {
+    final Activity that = this;
     return new View.OnClickListener() {
       @Override
       public void onClick(View view) {
         Log.d(TAG, "Clicked on " + view.getId());
+
+
+        if (!invitation.isComplete()) {
+          Toast.makeText(that, R.string.incomplete_details, Toast.LENGTH_LONG).show();
+          return;
+        }
+
         new InvitationSenderTask(serverUrl,
                                  getApplicationContext())
             .execute(invitation);
@@ -89,35 +100,99 @@ public class InviteActivity extends Activity {
   private TimePicker.OnTimeChangedListener getEventTimeChangedListener() {
     return new TimePicker.OnTimeChangedListener() {
       @Override
-      public void onTimeChanged(TimePicker timePicker, int i, int i2) {
-        Log.d(TAG, "Event on " + timePicker.getId());
-        invitation.setEventTime(timePicker.getCurrentHour(),
-                                timePicker.getCurrentMinute());
+      public void onTimeChanged(TimePicker view, int i, int i2) {
+        Log.d(TAG, "Event on " + view.getId());
+        invitation.setEventTime(view.getCurrentHour(),
+                                view.getCurrentMinute());
       }
     };
   }
 
   private DatePicker.OnDateChangedListener getEventDateChangedListener() {
-    return null;  //To change body of created methods use File | Settings | File Templates.
+    return new DatePicker.OnDateChangedListener() {
+      @Override
+      public void onDateChanged(DatePicker view,
+                                int year,
+                                int monthOfYear,
+                                int dayOfMonth) {
+        Log.d(TAG, "Event on " + view.getId());
+        invitation.setEventDate(year, monthOfYear, dayOfMonth);
+      }
+    };
   }
 
   private TextWatcher getEventNameEditTextListener() {
-    return null;
+    return new TextWatcher() {
+      @Override
+      public void onTextChanged(CharSequence s, int start, int count, int after) {
+        Log.d(TAG, "Set even name");
+        invitation.setEventName(s.toString());
+      }
+
+      @Override
+      public void afterTextChanged(Editable editable) {}
+      @Override
+      public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+    };
   }
 
   private TextWatcher getEmailEditTextListener() {
-    return null;  //To change body of created methods use File | Settings | File Templates.
+    return new TextWatcher() {
+      @Override
+      public void onTextChanged(CharSequence s, int start, int count, int after) {
+        Log.d(TAG, "Set invitee email");
+        invitation.setEmail(s.toString());
+      }
+
+      @Override
+      public void afterTextChanged(Editable editable) {}
+      @Override
+      public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+    };
   }
 
   private TextWatcher getSignatureEditTextListener() {
-    return null;  //To change body of created methods use File | Settings | File Templates.
+    return new TextWatcher() {
+      @Override
+      public void onTextChanged(CharSequence s, int start, int count, int after) {
+        Log.d(TAG, "Set invite signature");
+        invitation.setInviteSignature(s.toString());
+      }
+
+      @Override
+      public void afterTextChanged(Editable editable) {}
+      @Override
+      public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+    };
   }
 
   private TextWatcher getLastNameEditTextListener() {
-    return null;  //To change body of created methods use File | Settings | File Templates.
+    return new TextWatcher() {
+      @Override
+      public void onTextChanged(CharSequence s, int start, int count, int after) {
+        Log.d(TAG, "Set invitee lastname");
+        invitation.setLastName(s.toString());
+      }
+
+      @Override
+      public void afterTextChanged(Editable editable) {}
+      @Override
+      public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+    };
   }
 
   private TextWatcher getFirstNameEditTextListener() {
-    return null;
+    return new TextWatcher() {
+      @Override
+      public void onTextChanged(CharSequence s, int start, int count, int after) {
+        Log.d(TAG, "Set invitee firstname");
+        invitation.setFirstName(s.toString());
+      }
+
+      @Override
+      public void afterTextChanged(Editable editable) {}
+      @Override
+      public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+    };
   }
 }

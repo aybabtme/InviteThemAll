@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+        >
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/inviter_signature"
+            android:id="@+id/signatureEditText"
+            android:inputType="textCapWords"/>
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/invitee_header"
+            android:id="@+id/textView1"/>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/invitee_firstname"
+                android:id="@+id/inviteeFirstnameEditBox"
+                android:layout_gravity="left"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:inputType="textPersonName"/>
+
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/invitee_lastname"
+                android:id="@+id/inviteeLastnameEditText"
+                android:layout_toRightOf="@+id/inviteeFirstnameEditBox"
+                android:layout_alignTop="@+id/inviteeFirstnameEditBox"
+                android:inputType="textPersonName"/>
+
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/invitee_email"
+                android:id="@+id/inviteeEmailEditText"
+                android:layout_alignLeft="@+id/inviteeFirstnameEditBox"
+                android:layout_below="@+id/inviteeFirstnameEditBox"
+                android:layout_alignParentRight="true"
+                android:inputType="textEmailAddress"/>
+    </RelativeLayout>
+
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/event_name_header"
+            android:id="@+id/textView"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/event_name"
+            android:id="@+id/eventNameEditText"
+            android:layout_gravity="center"
+            android:inputType="textCapWords"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/event_datetime_header"
+            android:id="eventDateTimeHeaderText"
+            android:layout_gravity="left|center_vertical"/>
+
+    <DatePicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/eventDatePicker"/>
+
+    <TimePicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/eventTimePicker"
+            android:layout_gravity="center"/>
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/send_invite_button"
+            android:id="@+id/sendInviteButton"
+            android:layout_gravity="right|center_vertical"/>
+</LinearLayout>
+
